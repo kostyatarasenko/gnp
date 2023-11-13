@@ -45,32 +45,32 @@ function readEncryptedPassword(name) {
   return decryptedPassword.toString('utf8')
 }
 
-const args = process.argv.slice(2);
+const args = process.argv.slice(2)
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout
-});
+})
 
 if (args[0]) {
-  const name = args[0];
+  const name = args[0]
   if (args[1] === '--read') {
-    const password = readEncryptedPassword(name);
-    console.log(`${name} : ${password}`);
+    const password = readEncryptedPassword(name)
+    console.log(`${name} : ${password}`)
   } else {
-    const password = generatePassword();
-    const file_path = saveEncryptedPassword(password, name);
-    console.log(`${name} : ${password} saved in ${file_path}`);
+    const password = generatePassword()
+    const file_path = saveEncryptedPassword(password, name)
+    console.log(`${name} : ${password} saved in ${file_path}`)
   }
 } else {
   rl.question('Enter a name for the password: ', (name) => {
-    rl.close();
+    rl.close()
     if (name) {
-      const password = generatePassword();
-      const file_path = saveEncryptedPassword(password, name);
-      console.log(`${name} : ${password} saved in ${file_path}`);
+      const password = generatePassword()
+      const file_path = saveEncryptedPassword(password, name)
+      console.log(`${name} : ${password} saved in ${file_path}`)
     } else {
-      console.log('Invalid name. Please provide a name for the password.');
+      console.log('Invalid name. Please provide a name for the password.')
     }
-  });
+  })
 }
