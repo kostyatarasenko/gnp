@@ -2,13 +2,20 @@
 
 INSTALL_DIR="/usr/local/bin"
 
-SCRIPT_PATH="/Users/kostatarasenko/WebstormProjects/gnp/generate_new_password.py"
+SCRIPT_PATH="/Users/kostatarasenko/WebstormProjects/gnp/src/generate_new_password.js"
+
+# Make sure script exists
+if [ ! -f "$SCRIPT_PATH" ]; then
+  echo "Error: Script not found at $SCRIPT_PATH"
+  exit 1
+fi
 
 sudo mkdir -p "$INSTALL_DIR"
 
 sudo cp "$SCRIPT_PATH" "$INSTALL_DIR"
 
-echo -e "#!/bin/bash\npython $INSTALL_DIR/generate_new_password.py \"\$@\"" | sudo tee "$INSTALL_DIR/gnp" > /dev/null
+# Replace bun with node if you want to use node to run the script
+echo -e "#!/bin/bash\nbun $INSTALL_DIR/generate_new_password.js \"\$@\"" | sudo tee "$INSTALL_DIR/gnp" > /dev/null
 
 sudo chmod +x "$INSTALL_DIR/gnp"
 
