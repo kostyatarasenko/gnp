@@ -1,7 +1,7 @@
 ### Installation
 1. Clone the repo
    ```sh
-   git clone ...
+   git clone git@github.com:kostyatarasenko/gnp.git
     ```
 2. Install python v2.7 or higher (recommended 2.7)
 3. Install cryptography package
